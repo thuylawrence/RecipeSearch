@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder | Home</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="../js/main.js" type="module"></script>
+</head>
+<body>
+    <header class="divider" id="header"></header>
+    <main>
+        <section class="search-container">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search for recipes...">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+        <section class="featured-recipes">
+            <div class="container">
+                <h1>Recipes</h1>
+        
+               
+                <!-- Beef Recipes -->
+                <h2 class="section-title">Beef Recipes</h2>
+                <div class="recipe2">
+                    <!-- Updated link to fetch beef recipes -->
+                    <a href="recipe-list/index.html?product=beef">
+                        <img src="./images/western.jpg" alt="Western Food Image" width="100">
+                    </a>
+                    <p></p>
+                    <div class="clear"></div>
+                </div>
+                
+               
+                
+            </div>
+            <h2>Featured Recipes</h2>
+            <p>Discover the joy of cooking with our Recipe Finder...</p>
+            
+        </section>
+        <div class="registering">
+            <form id="news-letter">
+                <input type="email" name="email" id="newsletterEmail" placeholder="Your Email Here" required />
+                <input type="submit" id="newsletterBtn" value="Sign Up Now" />
+            </form>
+        </div>
+    </main>
+    <footer id="footer"></footer>
+    <script src="./js/script.js"></script>
+</body>
+</html>
