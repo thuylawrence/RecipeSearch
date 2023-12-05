@@ -54,7 +54,7 @@ document.getElementById('registrationForm').addEventListener('submit', async (ev
     if (!valid) {
         // Handle validation errors
         console.log('Validation errors:', errors);
-        // You can update the UI to reflect these errors
+       
         return;
     }
 

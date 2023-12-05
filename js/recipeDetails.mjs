@@ -10,7 +10,7 @@ export async function fetchRecipeDetails(recipeId) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        return data.meals[0]; // Assuming the first meal is the relevant one
+        return data.meals[0]; 
     } catch (error) {
         console.error('Fetching recipe details failed:', error);
         throw error;

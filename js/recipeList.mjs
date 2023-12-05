@@ -11,8 +11,7 @@ function recipeCardTemplate(recipe) {
   </li>`;
 }
 
-{/* <p class="recipe-card__description">${recipe.ShortDescription}</p>
-<p class="recipe-card__difficulty">Difficulty: ${recipe.Difficulty}</p></a */}
+
 
 export default async function recipeList(selector, category, lists) { 
     const element = document.querySelector(selector);
