@@ -10,7 +10,7 @@ document.querySelector('#search-btn').addEventListener('click', (e)=>{
     console.log(name);
     location.href = `/recipe-list/search-list.html?name=${name}`;
 })
-const recipeId = 'YOUR_RECIPE_ID_HERE'; // Replace with the actual recipe ID you want to fetch
+const recipeId = '53050'; 
 const containerElement = document.getElementById('recipe-details-container');
 
 // Fetch recipe details

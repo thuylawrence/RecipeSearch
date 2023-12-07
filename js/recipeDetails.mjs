@@ -1,4 +1,8 @@
 // recipeDetail.mjs
+import { getParam } from "./utils.mjs";
+// recipeDetail.mjs
+
+//const data = await fetchRecipeDetails(recipeID);
 
 
 // Function to fetch recipe details
@@ -16,6 +20,16 @@ export async function fetchRecipeDetails(recipeId) {
         throw error;
     }
 }
+const recipeID = getParam("recipe");
+const container = document.querySelector(".recipe-detail");
+
+fetchRecipeDetails(recipeID)
+    .then(recipeData => {
+        renderRecipeDetails(recipeData, container);
+    })
+    .catch(error => {
+        console.error('Error fetching and rendering recipe details:', error);
+    });
 
 // Function to render recipe details in the UI
 export function renderRecipeDetails(recipeData, containerElement) {
@@ -32,6 +46,8 @@ export function renderRecipeDetails(recipeData, containerElement) {
     const imageElement = new Image();
     imageElement.src = imageUrl;
     imageElement.alt = `Image of ${title}`;
+    const ingredientsTitle = document.createElement('h3');
+    ingredientsTitle.textContent = 'Ingredients:';
 
     // TheMealDB uses dynamic keys for ingredients and measurements
     const ingredientsList = document.createElement('ul');
@@ -44,9 +60,11 @@ export function renderRecipeDetails(recipeData, containerElement) {
             ingredientsList.appendChild(item);
         }
     }
+    const instructionsTitle = document.createElement('h3');
+    instructionsTitle.textContent = 'Instructions to Cook:';
 
     const instructionsElement = document.createElement('p');
     instructionsElement.textContent = instructions;
 
-    containerElement.append(titleElement, imageElement, ingredientsList, instructionsElement);
+    containerElement.append(titleElement, imageElement, ingredientsTitle, ingredientsList, instructionsTitle, instructionsElement);
 }
