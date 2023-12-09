@@ -1,12 +1,18 @@
 // registration.js
+import { loadHeaderFooter } from "../js/utils.mjs";
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Call loadHeaderFooter to load the header and footer
+    loadHeaderFooter();
+    
 
 // Function to validate user input
-function validateRegistrationData(username, email, password, confirmPassword) {
+    function validateRegistrationData(username, email, password, confirmPassword) {
     // Basic validation criteria - can be expanded as needed
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const validEmail = emailRegex.test(email);
-    const validPassword = password.length >= 6;
-    const passwordsMatch = password === confirmPassword;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const validEmail = emailRegex.test(email);
+        const validPassword = password.length >= 6;
+        const passwordsMatch = password === confirmPassword;
 
     return {
         valid: validEmail && validPassword && passwordsMatch,
@@ -19,7 +25,7 @@ function validateRegistrationData(username, email, password, confirmPassword) {
 }
 
 // Function to submit registration data
-async function submitRegistrationData(username, email, password) {
+    async function submitRegistrationData(username, email, password) {
     try {
         const response = await fetch('/api/register', {
             method: 'POST',
@@ -38,10 +44,10 @@ async function submitRegistrationData(username, email, password) {
         console.error('Registration error:', error);
         throw error;
     }
-}
+};
 
 // Event listener for the registration form submission
-document.getElementById('registrationForm').addEventListener('submit', async (event) => {
+    document.getElementById('registrationForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const username = document.getElementById('username').value;
@@ -67,4 +73,5 @@ document.getElementById('registrationForm').addEventListener('submit', async (ev
         console.log('Registration failed:', error);
         // Update the UI to show the registration error
     }
+})
 });
