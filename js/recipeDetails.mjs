@@ -14,6 +14,7 @@ export async function fetchRecipeDetails(recipeId) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
+        console.log(data);
         return data.meals[0]; 
     } catch (error) {
         console.error('Fetching recipe details failed:', error);

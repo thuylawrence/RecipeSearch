@@ -1,7 +1,7 @@
 // registration.js
 import { loadHeaderFooter } from "../js/utils.mjs";
 
-document.addEventListener('DOMContentLoaded', () => {
+//document.addEventListener('DOMContentLoaded', () => {
     // Call loadHeaderFooter to load the header and footer
     loadHeaderFooter();
     
@@ -25,25 +25,27 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 // Function to submit registration data
-    async function submitRegistrationData(username, email, password) {
-    try {
-        const response = await fetch('/api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, email, password }),
-        });
+    async function submitRegistrationData(username, email, password, confirmPassword) {
+        location.assign('../welcome/index.html')
+    
+    // try {
+    //     const response = await fetch('/api/register', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({ username, email, password, confirmPassword }),
+    //     });
 
-        if (!response.ok) {
-            throw new Error('Failed to register');
-        }
+    //     if (!response.ok) {
+    //         throw new Error('Failed to register');
+    //     }
 
-        return await response.json();
-    } catch (error) {
-        console.error('Registration error:', error);
-        throw error;
-    }
+    //     return await response.json();
+    // } catch (error) {
+    //     console.error('Registration error:', error);
+    //     throw error;
+    // }
 };
 
 // Event listener for the registration form submission
@@ -65,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-        const registrationResult = await submitRegistrationData(username, email, password);
+        const registrationResult = await submitRegistrationData(username, email, password, confirmPassword);
         console.log('Registration successful:', registrationResult);
         // Redirect to login page or dashboard after successful registration
     } catch (error) {
@@ -73,5 +75,29 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Registration failed:', error);
         // Update the UI to show the registration error
     }
-})
 });
+
+
+
+// Function to fetch registration information for a specific user
+async function fetchRegistrationInfo(userId) {
+    try {
+        const response = await fetch(`/api/user/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch registration information');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Fetch registration information error:', error);
+        throw error;
+    }
+}
+
+export { fetchRegistrationInfo };

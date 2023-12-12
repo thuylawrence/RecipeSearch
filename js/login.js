@@ -1,5 +1,6 @@
 import { getParam, loadHeaderFooter } from "./utils.mjs";
-import { login } from "./auth.mjs"
+import { fetchRegistrationInfo } from "../js/registration.mjs";
+
 
 loadHeaderFooter();
 
@@ -13,3 +14,14 @@ formtag.addEventListener("submit",(e) => {
     let password = document.querySelector("#password").value;
     login({email, password}, receive) ;
 })
+
+const userId = 1; 
+fetchRegistrationInfo(userId)
+    .then((registrationInfo) => {
+        console.log('Registration information:', registrationInfo);
+       
+    })
+    .catch((error) => {
+        // Handle errors
+        console.error('Error:', error);
+    });
